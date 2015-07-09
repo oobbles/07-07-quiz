@@ -38,9 +38,26 @@ var answer = document.getElementById("answer");
 var given_answer = function(){
   return answer.value;
 }
+var next_question = function(){
+  if(current_question == questions.length-1){
+    question_result.innerText="Final Right: " + total_right;
+    answer.value=null;
+    question.innerText = "";
+    choices.innerText="";
+  }
+  else{
+  current_question++;
+  answer.value=null;
+  question.innerText = "";
+  question_result.innerText ="";
+  choices.innerText="";
+  question.innerText=questions[current_question].question;
+  choices.innerText=questions[current_question].choice1 + ", " + questions[current_question].choice2 + ", " + questions[current_question].choice3;
+    }
+  }
 
 var is_correct_answer = function(answer_text){
-  if (answer_text==1){
+  if (answer_text==questions[current_question].answer){
   total_right++;
   return true;
   }
@@ -51,10 +68,10 @@ var is_correct_answer = function(answer_text){
 
 var update_question_result = function(correct){
   if (correct==true){
-    question.innerText = "Success!";
+    question_result.innerText = "Success!";
   }
   else {
-    question.innerText = "Wrong!";
+    question_result.innerText = "Wrong!";
   }
 }
 
@@ -66,15 +83,6 @@ var process_answer_submission = function(){
 var submitter = document.getElementById("submitter");
 submitter.onclick = process_answer_submission;
 
-var next_question = function(){
-  if(current_question == questions.length-1){
-    question.innerText="Final Right: " + total_right;
-  }
-current_question++;
-answer.value=null;
-question.innerText=questions[current_question].question;
-choices.innerText=questions[current_question].choice1 + ", " + questions[current_question].choice2 + ", " + questions[current_question].choice3;
-}
 
 var next = document.getElementById("next");
 next.onclick = next_question;

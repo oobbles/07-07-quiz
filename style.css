@@ -1,0 +1,16 @@
+body{
+  font-family: 'Special Elite', cursive;
+}
+
+#question{
+  margin-bottom: 23px;
+}
+
+#choices{
+  padding-bottom: 28px;
+}
+#question_result{
+padding-top: 23px;
+padding-left: 45px;
+font-size: 32px;
+}
